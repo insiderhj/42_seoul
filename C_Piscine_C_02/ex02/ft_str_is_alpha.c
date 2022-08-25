@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_str_is_alpha.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: heejikim <heejikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/24 15:05:53 by heejikim          #+#    #+#             */
-/*   Updated: 2022/08/24 22:53:53 by heejikim         ###   ########.fr       */
+/*   Created: 2022/08/24 23:06:53 by heejikim          #+#    #+#             */
+/*   Updated: 2022/08/24 23:16:21 by heejikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_putstr(char *str)
+int	ft_str_is_alpha(char *str)
 {
 	while (*str)
 	{
-		write(1, str, 1);
+		if (!(*str > 'a' && *str < 'z' || *str > 'A' && *str < 'z'))
+			return (0);
 		str++;
 	}
+	return (1);
 }

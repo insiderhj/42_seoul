@@ -1,22 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_strupcase.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: heejikim <heejikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/24 15:05:53 by heejikim          #+#    #+#             */
-/*   Updated: 2022/08/24 22:53:53 by heejikim         ###   ########.fr       */
+/*   Created: 2022/08/24 23:36:49 by heejikim          #+#    #+#             */
+/*   Updated: 2022/08/24 23:37:24 by heejikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_putstr(char *str)
+char	*ft_strupcase(char *str)
 {
-	while (*str)
-	{
-		write(1, str, 1);
-		str++;
-	}
+	char *res;
 }

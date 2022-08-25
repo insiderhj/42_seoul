@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: heejikim <heejikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/24 15:05:53 by heejikim          #+#    #+#             */
-/*   Updated: 2022/08/24 22:53:53 by heejikim         ###   ########.fr       */
+/*   Created: 2022/08/24 22:55:39 by heejikim          #+#    #+#             */
+/*   Updated: 2022/08/24 22:59:57 by heejikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_putstr(char *str)
+char	*ft_strcpy(char *dest, char *src)
 {
-	while (*str)
+	char	*res;
+
+	res = dest;
+	while (*src)
 	{
-		write(1, str, 1);
-		str++;
+		*dest = *src;
+		dest++;
+		src++;
 	}
+	*dest = '\0';
+	return (res);
 }
