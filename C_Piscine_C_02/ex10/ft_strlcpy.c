@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_lowercase.c                              :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: heejikim <heejikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/24 23:19:02 by heejikim          #+#    #+#             */
-/*   Updated: 2022/08/26 02:55:00 by heejikim         ###   ########.fr       */
+/*   Created: 2022/08/25 01:45:53 by heejikim          #+#    #+#             */
+/*   Updated: 2022/08/28 07:59:49 by heejikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_str_is_lowercase(char *str)
+#include <stdio.h>
+
+unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 {
-	while (*str)
+	unsigned int	i;
+
+	i = 0;
+	while (size != 0 && src[i] && i < size - 1)
 	{
-		if (!(*str >= 'a' && *str <= 'z'))
-			return (0);
-		str++;
+		dest[i] = src[i];
+		i++;
 	}
-	return (1);
+	dest[i] = '\0';
+	while (src[i])
+		i++;
+	return (i);
 }

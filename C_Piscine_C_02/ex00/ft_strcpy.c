@@ -6,21 +6,21 @@
 /*   By: heejikim <heejikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 22:55:39 by heejikim          #+#    #+#             */
-/*   Updated: 2022/08/24 22:59:57 by heejikim         ###   ########.fr       */
+/*   Updated: 2022/08/28 10:32:42 by heejikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 char	*ft_strcpy(char *dest, char *src)
 {
-	char	*res;
+	char	*ptr;
 
-	res = dest;
+	ptr = dest;
 	while (*src)
 	{
-		*dest = *src;
-		dest++;
+		*ptr = *src;
+		ptr++;
 		src++;
 	}
-	*dest = '\0';
-	return (res);
+	*ptr = '\0';
+	return (dest);
 }

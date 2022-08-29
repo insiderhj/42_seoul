@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_lowercase.c                              :+:      :+:    :+:   */
+/*   ft_strlowcase.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: heejikim <heejikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/24 23:19:02 by heejikim          #+#    #+#             */
-/*   Updated: 2022/08/26 02:55:00 by heejikim         ###   ########.fr       */
+/*   Created: 2022/08/25 01:36:09 by heejikim          #+#    #+#             */
+/*   Updated: 2022/08/28 10:37:34 by heejikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_str_is_lowercase(char *str)
+char	*ft_strlowcase(char *str)
 {
-	while (*str)
+	char	*ptr;
+
+	ptr = str;
+	while (*ptr)
 	{
-		if (!(*str >= 'a' && *str <= 'z'))
-			return (0);
-		str++;
+		if (*ptr >= 'A' && *ptr <= 'Z')
+			*ptr += 'a' - 'A';
+		ptr++;
 	}
-	return (1);
+	return (str);
 }

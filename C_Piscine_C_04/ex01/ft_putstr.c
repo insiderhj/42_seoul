@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_lowercase.c                              :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: heejikim <heejikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/24 23:19:02 by heejikim          #+#    #+#             */
-/*   Updated: 2022/08/26 02:55:00 by heejikim         ###   ########.fr       */
+/*   Created: 2022/08/28 13:27:00 by heejikim          #+#    #+#             */
+/*   Updated: 2022/08/28 13:27:05 by heejikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_str_is_lowercase(char *str)
+#include <unistd.h>
+
+void	ft_putstr(char *str)
 {
 	while (*str)
 	{
-		if (!(*str >= 'a' && *str <= 'z'))
-			return (0);
+		write(1, str, 1);
 		str++;
 	}
-	return (1);
 }

@@ -1,22 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_lowercase.c                              :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: heejikim <heejikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/24 23:19:02 by heejikim          #+#    #+#             */
-/*   Updated: 2022/08/26 02:55:00 by heejikim         ###   ########.fr       */
+/*   Created: 2022/08/28 13:29:15 by heejikim          #+#    #+#             */
+/*   Updated: 2022/08/29 18:40:21 by heejikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_str_is_lowercase(char *str)
+int	ft_atoi(char *str)
 {
-	while (*str)
+	int	neg;
+	int	res;
+
+	neg = 0;
+	res = 0;
+	while (*str == ' ')
+		str++;
+	while (*str == '-' || *str == '+')
 	{
-		if (!(*str >= 'a' && *str <= 'z'))
-			return (0);
+		if (*str == '-')
+			neg = !neg;
 		str++;
 	}
-	return (1);
+	while (*str >= '0' && *str <= '9')
+	{
+		if (neg)
+			res = res * 10 - (*str - '0');
+		else
+			res = res * 10 + (*str - '0');
+		str++;
+	}
+	return (res);
 }

@@ -1,22 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_lowercase.c                              :+:      :+:    :+:   */
+/*   ft_putstr_non_printable.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: heejikim <heejikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/24 23:19:02 by heejikim          #+#    #+#             */
-/*   Updated: 2022/08/26 02:55:00 by heejikim         ###   ########.fr       */
+/*   Created: 2022/08/25 04:13:46 by heejikim          #+#    #+#             */
+/*   Updated: 2022/08/28 09:23:55 by heejikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_str_is_lowercase(char *str)
+#include <unistd.h>
+
+void	print_hex(unsigned char c)
+{
+	char	*hex;
+
+	hex = "0123456789abcdef";
+	write(1, "\\", 1);
+	write(1, hex + c / 16, 1);
+	write(1, hex + c % 16, 1);
+}
+
+void	ft_putstr_non_printable(char *str)
 {
 	while (*str)
 	{
-		if (!(*str >= 'a' && *str <= 'z'))
-			return (0);
+		if (*str >= 32 && *str <= 126)
+			write(1, str, 1);
+		else
+			print_hex(*str);
 		str++;
 	}
-	return (1);
 }

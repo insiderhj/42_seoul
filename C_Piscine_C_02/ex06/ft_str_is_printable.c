@@ -6,7 +6,7 @@
 /*   By: heejikim <heejikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 23:20:53 by heejikim          #+#    #+#             */
-/*   Updated: 2022/08/24 23:36:13 by heejikim         ###   ########.fr       */
+/*   Updated: 2022/08/28 08:05:06 by heejikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@ int	ft_str_is_printable(char *str)
 {
 	while (*str)
 	{
-		if (*str >= 33 || *str <= 126)
+		if (!(*str >= 32 && *str <= 126))
 			return (0);
 		str++;
 	}

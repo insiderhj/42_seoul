@@ -1,22 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_lowercase.c                              :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: heejikim <heejikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/24 23:19:02 by heejikim          #+#    #+#             */
-/*   Updated: 2022/08/26 02:55:00 by heejikim         ###   ########.fr       */
+/*   Created: 2022/08/28 13:27:58 by heejikim          #+#    #+#             */
+/*   Updated: 2022/08/29 18:30:01 by heejikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_str_is_lowercase(char *str)
+#include <unistd.h>
+
+void	ft_putchar(char c)
 {
-	while (*str)
+	write(1, &c, 1);
+}
+
+void	ft_putnbr(int nb)
+{
+	int	div;
+	int	mod;
+
+	div = nb / 10;
+	mod = nb % 10;
+	if (nb < 0)
 	{
-		if (!(*str >= 'a' && *str <= 'z'))
-			return (0);
-		str++;
+		write(1, "-", 1);
+		div = -div;
+		mod = -mod;
 	}
-	return (1);
+	if (div > 0)
+		ft_putnbr(div);
+	ft_putchar(mod);
 }

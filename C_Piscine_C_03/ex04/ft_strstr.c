@@ -1,22 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_lowercase.c                              :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: heejikim <heejikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/24 23:19:02 by heejikim          #+#    #+#             */
-/*   Updated: 2022/08/26 02:55:00 by heejikim         ###   ########.fr       */
+/*   Created: 2022/08/26 20:05:26 by heejikim          #+#    #+#             */
+/*   Updated: 2022/08/29 19:06:49 by heejikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_str_is_lowercase(char *str)
+#include <stdio.h>
+
+char	*ft_strstr(char *str, char *to_find)
 {
+	char	*ptr;
+	char	*src;
+
+	if (*to_find == '\0')
+		return (str);
 	while (*str)
 	{
-		if (!(*str >= 'a' && *str <= 'z'))
-			return (0);
+		ptr = str;
+		src = to_find;
+		while (*src && *ptr == *src)
+		{
+			src++;
+			ptr++;
+		}
+		if (!*src)
+			return (str);
 		str++;
 	}
-	return (1);
+	return (0);
 }

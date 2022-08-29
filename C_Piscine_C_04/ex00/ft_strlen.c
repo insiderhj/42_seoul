@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_lowercase.c                              :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: heejikim <heejikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/24 23:19:02 by heejikim          #+#    #+#             */
-/*   Updated: 2022/08/26 02:55:00 by heejikim         ###   ########.fr       */
+/*   Created: 2022/08/28 13:26:24 by heejikim          #+#    #+#             */
+/*   Updated: 2022/08/28 14:40:14 by heejikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_str_is_lowercase(char *str)
+int	ft_strlen(char *str)
 {
+	int		cnt;
+
+	cnt = 0;
 	while (*str)
 	{
-		if (!(*str >= 'a' && *str <= 'z'))
-			return (0);
+		cnt++;
 		str++;
 	}
-	return (1);
+	return (cnt);
 }
