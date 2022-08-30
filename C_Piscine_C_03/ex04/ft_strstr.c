@@ -6,11 +6,9 @@
 /*   By: heejikim <heejikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 20:05:26 by heejikim          #+#    #+#             */
-/*   Updated: 2022/08/29 19:06:49 by heejikim         ###   ########.fr       */
+/*   Updated: 2022/08/30 16:55:30 by heejikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <stdio.h>
 
 char	*ft_strstr(char *str, char *to_find)
 {

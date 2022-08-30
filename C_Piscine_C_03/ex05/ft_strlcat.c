@@ -6,12 +6,9 @@
 /*   By: heejikim <heejikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 00:03:40 by heejikim          #+#    #+#             */
-/*   Updated: 2022/08/28 11:05:49 by heejikim         ###   ########.fr       */
+/*   Updated: 2022/08/30 16:55:34 by heejikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <string.h>
-#include <stdio.h>
 
 int	ft_strlen(char *str)
 {

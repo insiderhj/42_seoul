@@ -6,7 +6,7 @@
 /*   By: heejikim <heejikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 13:27:58 by heejikim          #+#    #+#             */
-/*   Updated: 2022/08/29 18:30:01 by heejikim         ###   ########.fr       */
+/*   Updated: 2022/08/30 03:14:10 by heejikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,5 @@ void	ft_putnbr(int nb)
 	}
 	if (div > 0)
 		ft_putnbr(div);
-	ft_putchar(mod);
+	ft_putchar(mod + '0');
 }

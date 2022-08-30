@@ -6,12 +6,9 @@
 /*   By: heejikim <heejikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 23:55:38 by heejikim          #+#    #+#             */
-/*   Updated: 2022/08/29 17:27:56 by heejikim         ###   ########.fr       */
+/*   Updated: 2022/08/30 16:55:27 by heejikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <stdio.h>
-#include <string.h>
 
 char	*ft_strncat(char *dest, char *src, unsigned int nb)
 {

@@ -6,11 +6,9 @@
 /*   By: heejikim <heejikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 23:45:38 by heejikim          #+#    #+#             */
-/*   Updated: 2022/08/29 17:29:32 by heejikim         ###   ########.fr       */
+/*   Updated: 2022/08/30 16:55:23 by heejikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <stdio.h>
 
 char	*ft_strcat(char *dest, char *src)
 {

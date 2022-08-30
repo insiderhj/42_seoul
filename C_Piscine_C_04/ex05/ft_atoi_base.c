@@ -6,7 +6,7 @@
 /*   By: heejikim <heejikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 14:41:46 by heejikim          #+#    #+#             */
-/*   Updated: 2022/08/29 18:40:45 by heejikim         ###   ########.fr       */
+/*   Updated: 2022/08/30 00:46:25 by heejikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,9 @@ int	ft_valid_base(char *base)
 		return (0);
 	while (*base)
 	{
-		if (*base == '+' || *base == '-' || *base == ' ')
+		if (*base == '+' || *base == '-'
+			|| *base == ' ' || *base == '\t' || *base == '\r'
+			|| *base == '\n' || *base == '\v' || *base == '\f')
 			return (0);
 		ptr = base + 1;
 		while (*ptr)
@@ -69,7 +71,8 @@ int	ft_atoi_base(char *str, char *base)
 		return (0);
 	neg = 0;
 	res = 0;
-	while (*str == ' ')
+	while (*str == ' ' || *str == '\t' || *str == '\r'
+		|| *str == '\n' || *str == '\v' || *str == '\f')
 		str++;
 	while (*str == '-' || *str == '+')
 	{
@@ -77,7 +80,7 @@ int	ft_atoi_base(char *str, char *base)
 			neg = !neg;
 		str++;
 	}
-	while (ft_get_pos(base, *str) != -1)
+	while (str != '\0' && ft_get_pos(base, *str) != -1)
 	{
 		if (neg)
 			res = res * ft_strlen(base) - ft_get_pos(base, *str);

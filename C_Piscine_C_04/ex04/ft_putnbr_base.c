@@ -6,7 +6,7 @@
 /*   By: heejikim <heejikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 14:39:46 by heejikim          #+#    #+#             */
-/*   Updated: 2022/08/29 18:40:25 by heejikim         ###   ########.fr       */
+/*   Updated: 2022/08/30 00:43:57 by heejikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	ft_valid_base(char *base)
 		return (0);
 	while (*base)
 	{
-		if (*base == '+' || *base == '-' || *base == ' ')
+		if (*base == '+' || *base == '-')
 			return (0);
 		ptr = base + 1;
 		while (*ptr)

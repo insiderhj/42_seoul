@@ -6,7 +6,7 @@
 /*   By: heejikim <heejikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 13:29:15 by heejikim          #+#    #+#             */
-/*   Updated: 2022/08/29 18:40:21 by heejikim         ###   ########.fr       */
+/*   Updated: 2022/08/29 21:06:19 by heejikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ int	ft_atoi(char *str)
 
 	neg = 0;
 	res = 0;
-	while (*str == ' ')
+	while (*str == ' ' || *str == '\t' || *str == '\r'
+		|| *str == '\n' || *str == '\v' || *str == '\f')
 		str++;
 	while (*str == '-' || *str == '+')
 	{

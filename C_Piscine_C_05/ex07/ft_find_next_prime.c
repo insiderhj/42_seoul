@@ -1,31 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_find_next_prime.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: heejikim <heejikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/25 23:32:48 by heejikim          #+#    #+#             */
-/*   Updated: 2022/08/30 21:49:01 by heejikim         ###   ########.fr       */
+/*   Created: 2022/08/30 19:13:51 by heejikim          #+#    #+#             */
+/*   Updated: 2022/08/30 19:32:13 by heejikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strncmp(char *s1, char *s2, unsigned int n)
+int	ft_is_prime2(int nb)
 {
-	unsigned int	idx;
+	int	i;
 
-	idx = 0;
-	if (n == 0)
+	if (nb <= 1)
 		return (0);
-	while (*s1 == *s2)
+	i = 2;
+	while (i * i <= nb && i * i >= 0)
 	{
-		if (*s1 == 0 || idx >= n - 1)
+		if (nb % i == 0)
 			return (0);
-		s1++;
-		s2++;
-		idx++;
+		i++;
 	}
-	if (*(unsigned char *)s1 - *(unsigned char *)s2 > 0)
-		return (1);
-	return (-1);
+	return (1);
+}
+
+int	ft_find_next_prime(int nb)
+{
+	while (nb <= 2147483647)
+	{
+		if (ft_is_prime2(nb))
+			return (nb);
+		nb++;
+	}
+	return (0);
 }
