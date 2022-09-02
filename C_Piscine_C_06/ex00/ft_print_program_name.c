@@ -6,7 +6,7 @@
 /*   By: heejikim <heejikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 23:28:28 by heejikim          #+#    #+#             */
-/*   Updated: 2022/08/31 21:06:18 by heejikim         ###   ########.fr       */
+/*   Updated: 2022/09/02 19:06:03 by heejikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,10 @@ void	ft_putstr(char *str)
 	write(1, "\n", 1);
 }
 
-#include <stdio.h>
 int	main(int argc, char **argv)
 {
 	if (argc < 1)
 		return (-1);
-	printf("%s\n", argv[0]);
+	ft_putstr(argv[0]);
 	return (0);
 }
