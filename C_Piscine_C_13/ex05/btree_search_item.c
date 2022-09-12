@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_map.c                                           :+:      :+:    :+:   */
+/*   btree_search_item.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: heejikim <heejikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/07 20:18:45 by heejikim          #+#    #+#             */
-/*   Updated: 2022/09/12 20:28:43 by heejikim         ###   ########.fr       */
+/*   Created: 2022/09/11 23:24:46 by heejikim          #+#    #+#             */
+/*   Updated: 2022/09/12 02:39:34 by heejikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "ft_btree.h"
 
-int	*ft_map(int *tab, int length, int (*f)(int))
+void	*btree_search_item(t_btree *root, void *data_ref,
+							int (*cmpf) (void *, void *))
 {
-	int	*res;
-	int	i;
-
-	res = (int *)malloc(sizeof(int) * length);
-	if (!res)
+	if (!root)
 		return (0);
-	i = 0;
-	while (i < length)
-	{
-		res[i] = f(tab[i]);
-		i++;
-	}
-	return (res);
+	if (!cmpf(data_ref, root->item))
+		return (root->item);
+	if (cmpf(data_ref, root->item) < 0)
+		return (btree_search_item(root->left, data_ref, cmpf));
+	return (btree_search_item(root->right, data_ref, cmpf));
 }

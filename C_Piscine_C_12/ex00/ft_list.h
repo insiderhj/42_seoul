@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_map.c                                           :+:      :+:    :+:   */
+/*   ft_list.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: heejikim <heejikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/07 20:18:45 by heejikim          #+#    #+#             */
-/*   Updated: 2022/09/12 20:28:43 by heejikim         ###   ########.fr       */
+/*   Created: 2022/09/08 17:20:35 by heejikim          #+#    #+#             */
+/*   Updated: 2022/09/08 22:26:09 by heejikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#ifndef FT_LIST_H
+# define FT_LIST_H
 
-int	*ft_map(int *tab, int length, int (*f)(int))
+typedef struct s_list
 {
-	int	*res;
-	int	i;
+	struct s_list	*next;
+	void			*data;
+}	t_list;
 
-	res = (int *)malloc(sizeof(int) * length);
-	if (!res)
-		return (0);
-	i = 0;
-	while (i < length)
-	{
-		res[i] = f(tab[i]);
-		i++;
-	}
-	return (res);
-}
+t_list	*ft_create_elem(void *data);
+
+#endif

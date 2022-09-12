@@ -1,30 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_map.c                                           :+:      :+:    :+:   */
+/*   ft_list_reverse_fun.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: heejikim <heejikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/07 20:18:45 by heejikim          #+#    #+#             */
-/*   Updated: 2022/09/12 20:28:43 by heejikim         ###   ########.fr       */
+/*   Created: 2022/09/08 20:39:58 by heejikim          #+#    #+#             */
+/*   Updated: 2022/09/08 23:44:51 by heejikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "ft_list.h"
 
-int	*ft_map(int *tab, int length, int (*f)(int))
+void	swap(void **a, void **b)
 {
-	int	*res;
-	int	i;
+	void	*tmp;
 
-	res = (int *)malloc(sizeof(int) * length);
-	if (!res)
-		return (0);
-	i = 0;
-	while (i < length)
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
+}
+
+void	ft_list_reverse_fun(t_list *begin_list)
+{
+	int		i;
+	int		j;
+	int		len;
+	t_list	*cur;
+
+	cur = begin_list;
+	len = 0;
+	while (cur)
 	{
-		res[i] = f(tab[i]);
+		len++;
+		cur = cur->next;
+	}
+	i = 0;
+	while (i < len - 1)
+	{
+		cur = begin_list;
+		j = 0;
+		while (j < len - 1 - i)
+		{
+			swap(&(cur->data), &(cur->next->data));
+			cur = cur->next;
+			j++;
+		}
 		i++;
 	}
-	return (res);
 }

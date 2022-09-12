@@ -1,30 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_map.c                                           :+:      :+:    :+:   */
+/*   btree_apply_infix.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: heejikim <heejikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/07 20:18:45 by heejikim          #+#    #+#             */
-/*   Updated: 2022/09/12 20:28:43 by heejikim         ###   ########.fr       */
+/*   Created: 2022/09/11 19:57:51 by heejikim          #+#    #+#             */
+/*   Updated: 2022/09/12 02:35:24 by heejikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "ft_btree.h"
 
-int	*ft_map(int *tab, int length, int (*f)(int))
+void	btree_apply_infix(t_btree *root, void (*applyf) (void *))
 {
-	int	*res;
-	int	i;
-
-	res = (int *)malloc(sizeof(int) * length);
-	if (!res)
-		return (0);
-	i = 0;
-	while (i < length)
-	{
-		res[i] = f(tab[i]);
-		i++;
-	}
-	return (res);
+	if (!root)
+		return ;
+	btree_apply_infix(root->left, applyf);
+	applyf(root->item);
+	btree_apply_infix(root->right, applyf);
 }

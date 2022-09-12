@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_map.c                                           :+:      :+:    :+:   */
+/*   ft_list_at.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: heejikim <heejikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/07 20:18:45 by heejikim          #+#    #+#             */
-/*   Updated: 2022/09/12 20:28:43 by heejikim         ###   ########.fr       */
+/*   Created: 2022/09/08 18:17:29 by heejikim          #+#    #+#             */
+/*   Updated: 2022/09/08 22:24:27 by heejikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "ft_list.h"
 
-int	*ft_map(int *tab, int length, int (*f)(int))
+t_list	*ft_list_at(t_list *begin_list, unsigned int nbr)
 {
-	int	*res;
-	int	i;
+	unsigned int	i;
 
-	res = (int *)malloc(sizeof(int) * length);
-	if (!res)
-		return (0);
 	i = 0;
-	while (i < length)
+	while (i < nbr)
 	{
-		res[i] = f(tab[i]);
+		if (!begin_list)
+			return (0);
+		begin_list = begin_list->next;
 		i++;
 	}
-	return (res);
+	return (begin_list);
 }

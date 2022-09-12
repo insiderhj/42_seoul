@@ -1,30 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_map.c                                           :+:      :+:    :+:   */
+/*   ft_list_sort.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: heejikim <heejikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/07 20:18:45 by heejikim          #+#    #+#             */
-/*   Updated: 2022/09/12 20:28:43 by heejikim         ###   ########.fr       */
+/*   Created: 2022/09/08 20:03:32 by heejikim          #+#    #+#             */
+/*   Updated: 2022/09/08 23:21:39 by heejikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "ft_list.h"
 
-int	*ft_map(int *tab, int length, int (*f)(int))
+void	ft_list_sort(t_list **begin_list, int (*cmp) ())
 {
-	int	*res;
-	int	i;
+	t_list	*i;
+	t_list	*cur;
+	void	*data;
 
-	res = (int *)malloc(sizeof(int) * length);
-	if (!res)
-		return (0);
-	i = 0;
-	while (i < length)
+	i = *begin_list;
+	if (!i || !i->next)
+		return ;
+	while (i->next)
 	{
-		res[i] = f(tab[i]);
-		i++;
+		cur = *begin_list;
+		while (cur->next)
+		{
+			if (cmp(cur->data, cur->next->data) > 0)
+			{
+				data = cur->data;
+				cur->data = cur->next->data;
+				cur->next->data = data;
+			}
+			cur = cur->next;
+		}
+		i = i->next;
 	}
-	return (res);
 }
