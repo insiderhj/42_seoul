@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnchar.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: heejikim <heejikim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: insiderHJ <heejikim@student.42seoul.kr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 18:52:23 by heejikim          #+#    #+#             */
-/*   Updated: 2022/11/14 19:54:06 by heejikim         ###   ########.fr       */
+/*   Updated: 2022/11/15 11:57:25 by insiderHJ        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,5 @@ size_t	ft_putnchar(char c, int len)
 		write(1, &c, 1);
 		i++;
 	}
-	return (len);
+	return (i);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_parser.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: heejikim <heejikim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: insiderHJ <heejikim@student.42seoul.kr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:10:34 by heejikim          #+#    #+#             */
-/*   Updated: 2022/11/14 21:08:41 by heejikim         ###   ########.fr       */
+/*   Updated: 2022/11/15 12:24:12 by insiderHJ        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

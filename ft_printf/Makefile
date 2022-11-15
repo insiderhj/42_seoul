@@ -4,7 +4,7 @@ SRC_DIR=./src
 CC=gcc
 CFLAGS=-Wall -Wextra -Werror -I$(INC_DIR)
 LIB_SRCS= $(addprefix $(LIB_DIR)/, ft_nbrlen.c ft_hexlen.c ft_strlen.c ft_isdigit.c ft_putchar.c\
-									ft_putstr.c ft_putnchar.c ft_putnnbr.c ft_putnhex.c ft_putnstr.c\
+									ft_putstr.c ft_putnchar.c ft_putnbr.c ft_puthex.c ft_putnstr.c\
 									ft_strchr.c)
 LIB_OBJS=$(LIB_SRCS:.c=.o)
 LIB=libft.a

@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_printer.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: heejikim <heejikim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: insiderHJ <heejikim@student.42seoul.kr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 16:16:36 by heejikim          #+#    #+#             */
-/*   Updated: 2022/11/14 22:08:30 by heejikim         ###   ########.fr       */
+/*   Updated: 2022/11/15 12:26:19 by insiderHJ        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdio.h>
 
 int	ft_print_conversion(t_print_opt opt, va_list ap)
 {
@@ -96,7 +97,15 @@ void	ft_putdata(t_type type, t_print_data data)
 	else if (type == STRING)
 		ft_putnstr(data.s, data.len);
 	else if (type == DECIMAL || type == UNSIGNED_DECIMAL)
-		ft_putnnbr(data.n, data.len);
+	{
+		ft_putnchar('0', data.len - ft_nbrlen(data.n));
+		if (data.len)
+			ft_putnbr(data.n);
+	}
 	else if (type == POINTER || type == HEX_LOWER || type == HEX_UPPER)
-		ft_putnhex(data.n, data.len, type == HEX_UPPER);
+	{
+		ft_putnchar('0', data.len - ft_hexlen(data.n));
+		if (data.len)
+			ft_puthex(data.n, type == HEX_UPPER);
+	}
 }
