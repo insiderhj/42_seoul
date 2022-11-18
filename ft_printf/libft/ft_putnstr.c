@@ -6,15 +6,16 @@
 /*   By: heejikim <heejikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 18:57:17 by heejikim          #+#    #+#             */
-/*   Updated: 2022/11/14 20:43:30 by heejikim         ###   ########.fr       */
+/*   Updated: 2022/11/16 23:04:29 by heejikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnstr(char *s, int len)
+int	ft_putnstr(char *s, int len)
 {
 	if (!s)
-		write(1, "(null)", len);
-	write(1, s, len);
+		return (write(1, "(null)", len));
+	else
+		return (write(1, s, len));
 }

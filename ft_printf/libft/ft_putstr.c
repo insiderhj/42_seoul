@@ -6,17 +6,16 @@
 /*   By: heejikim <heejikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 18:57:17 by heejikim          #+#    #+#             */
-/*   Updated: 2022/11/14 19:32:24 by heejikim         ###   ########.fr       */
+/*   Updated: 2022/11/16 23:03:51 by heejikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_putstr(char *s)
+int	ft_putstr(char *s)
 {
 	size_t	len;
 
 	len = ft_strlen(s);
-	write(1, s, len);
-	return (len);
+	return (write(1, s, len));
 }

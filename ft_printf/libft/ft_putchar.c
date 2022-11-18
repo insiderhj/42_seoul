@@ -6,14 +6,13 @@
 /*   By: heejikim <heejikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 18:52:23 by heejikim          #+#    #+#             */
-/*   Updated: 2022/11/14 20:18:27 by heejikim         ###   ########.fr       */
+/*   Updated: 2022/11/16 23:04:02 by heejikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_putchar(char c)
+int	ft_putchar(char c)
 {
-	write(1, &c, 1);
-	return (1);
+	return (write(1, &c, 1));
 }

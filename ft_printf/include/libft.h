@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: insiderHJ <heejikim@student.42seoul.kr>    +#+  +:+       +#+        */
+/*   By: heejikim <heejikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 16:49:37 by heejikim          #+#    #+#             */
-/*   Updated: 2022/11/15 12:14:36 by insiderHJ        ###   ########.fr       */
+/*   Updated: 2022/11/16 23:06:27 by heejikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ size_t	ft_nbrlen(long long n);
 size_t	ft_hexlen(unsigned long long n);
 size_t	ft_strlen(const char *s);
 int		ft_isdigit(int c);
-void	ft_putnbr(long long n);
-void	ft_puthex(unsigned long long n, int uppercase);
-size_t	ft_putchar(char c);
-size_t	ft_putstr(char *s);
-size_t	ft_putnchar(char c, int len);
-void	ft_putnstr(char *s, int len);
+int		ft_putnbr(long long n);
+int		ft_puthex(unsigned long long n, int uppercase);
+int		ft_putchar(char c);
+int		ft_putstr(char *s);
+int		ft_putnchar(char c, int len);
+int		ft_putnstr(char *s, int len);
 char	*ft_strchr(const char *s, int c);
 
 #endif

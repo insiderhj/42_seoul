@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_puthex.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: insiderHJ <heejikim@student.42seoul.kr>    +#+  +:+       +#+        */
+/*   By: heejikim <heejikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 18:57:17 by heejikim          #+#    #+#             */
-/*   Updated: 2022/11/15 12:14:08 by insiderHJ        ###   ########.fr       */
+/*   Updated: 2022/11/16 23:02:37 by heejikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_puthex(unsigned long long n, int uppercase)
+int	ft_puthex(unsigned long long n, int uppercase)
 {
 	char		*upper;
 	char		*lower;
@@ -25,14 +25,18 @@ void	ft_puthex(unsigned long long n, int uppercase)
 	mod = n % 0x10;
 	if (n < 0)
 	{
-		ft_putchar('-');
+		if (ft_putchar('-') == -1)
+			return (-1);
 		div = -div;
 		mod = -mod;
 	}
 	if (div > 0)
-		ft_puthex(div, uppercase);
+	{
+		if (ft_puthex(div, uppercase) == -1)
+			return (-1);
+	}
 	if (uppercase)
-		ft_putchar(upper[mod]);
+		return (ft_putchar(upper[mod]));
 	else
-		ft_putchar(lower[mod]);
+		return (ft_putchar(lower[mod]));
 }

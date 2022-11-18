@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: insiderHJ <heejikim@student.42seoul.kr>    +#+  +:+       +#+        */
+/*   By: heejikim <heejikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 18:55:24 by heejikim          #+#    #+#             */
-/*   Updated: 2022/11/15 12:14:56 by insiderHJ        ###   ########.fr       */
+/*   Updated: 2022/11/16 23:03:07 by heejikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr(long long n)
+int	ft_putnbr(long long n)
 {
 	long long	div;
 	long long	mod;
@@ -25,6 +25,9 @@ void	ft_putnbr(long long n)
 		mod = -mod;
 	}
 	if (div > 0)
-		ft_putnbr(div);
-	ft_putchar(mod + '0');
+	{
+		if (ft_putnbr(div) == -1)
+			return (-1);
+	}
+	return (ft_putchar(mod + '0'));
 }

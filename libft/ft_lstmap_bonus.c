@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: heejikim <heejikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 16:37:04 by heejikim          #+#    #+#             */
-/*   Updated: 2022/11/11 20:17:33 by heejikim         ###   ########.fr       */
+/*   Updated: 2022/11/17 12:27:06 by heejikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_del(void *content, void (*del)(void *))
+t_list	*ft_del2(void *content, void (*del)(void *))
 {
 	if (content)
 		del(content);
@@ -30,7 +30,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	content = f(lst->content);
 	res_start = ft_lstnew(content);
 	if (!res_start)
-		return (ft_del(content, del));
+		return (ft_del2(content, del));
 	res_last = res_start;
 	lst = lst->next;
 	while (lst)
@@ -41,7 +41,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 		if (!res_last)
 		{
 			ft_lstclear(&res_start, del);
-			return (ft_del(content, del));
+			return (ft_del2(content, del));
 		}
 		lst = lst->next;
 	}
