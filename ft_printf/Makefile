@@ -40,12 +40,7 @@ bonus : $(LIB) $(BONUS_OBJS)
 	cp $(LIB) $(NAME)
 	ar rcs $(NAME) $(BONUS_OBJS)
 
-test : main.c $(NAME)
-	$(CC) $(CFLAGS) main.c $(NAME)
-	./a.out
-	rm a.out
-
 %.o : %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-.PHONY: all clean fclean re bonus test
+.PHONY: all clean fclean re bonus
