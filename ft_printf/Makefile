@@ -16,6 +16,10 @@ BONUS_SRCS=$(addprefix $(SRC_DIR)/, ft_printf_parser_bonus.c  ft_printf_utils_bo
 BONUS_OBJS=$(BONUS_SRCS:.c=.o)
 NAME=libftprintf.a
 
+ifdef BONUS
+	OBJS=$(BONUS_OBJS)
+endif
+
 all : $(NAME)
 
 clean :
@@ -37,8 +41,7 @@ $(NAME) : $(LIB) $(OBJS)
 	ar rcs $(NAME) $(OBJS)
 
 bonus : $(LIB) $(BONUS_OBJS)
-	cp $(LIB) $(NAME)
-	ar rcs $(NAME) $(BONUS_OBJS)
+	make BONUS=1 $(NAME)
 
 %.o : %.c
 	$(CC) $(CFLAGS) -c $< -o $@
