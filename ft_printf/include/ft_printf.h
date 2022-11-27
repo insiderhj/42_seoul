@@ -6,14 +6,13 @@
 /*   By: heejikim <heejikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 14:55:52 by heejikim          #+#    #+#             */
-/*   Updated: 2022/11/16 23:07:42 by heejikim         ###   ########.fr       */
+/*   Updated: 2022/11/27 02:05:19 by heejikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 # include <stdarg.h>
-# include <stdio.h>
 # include "libft.h"
 
 typedef enum e_type {

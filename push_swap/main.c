@@ -6,11 +6,25 @@
 /*   By: heejikim <heejikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 23:37:37 by heejikim          #+#    #+#             */
-/*   Updated: 2022/11/25 05:30:47 by heejikim         ###   ########.fr       */
+/*   Updated: 2022/11/26 22:16:29 by heejikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	is_sorted(t_stack *stack)
+{
+	t_elem	*cur;
+
+	cur = stack->ta->up;
+	while (cur != stack->ta)
+	{
+		if (cur->val < cur->up->val)
+			return (0);
+		cur = cur->up;
+	}
+	return (1);
+}
 
 int	main(int argc, char **argv)
 {
@@ -30,6 +44,7 @@ int	main(int argc, char **argv)
 	}
 	stack->size_total = i - 1;
 	stack->size_a = i - 1;
-	push_swap(stack);
+	if (!is_sorted(stack))
+		push_swap(stack);
 	return (free_stack(stack, 0));
 }

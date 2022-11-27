@@ -6,7 +6,7 @@
 /*   By: heejikim <heejikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 22:10:57 by heejikim          #+#    #+#             */
-/*   Updated: 2022/11/25 04:44:38 by heejikim         ###   ########.fr       */
+/*   Updated: 2022/11/25 17:45:56 by heejikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 # define PUSH_SWAP_H
 # include <stdlib.h>
 
-typedef struct elem {
-	int			val;
-	struct elem	*up;
-	struct elem	*down;
+typedef struct s_elem {
+	int				val;
+	struct s_elem	*up;
+	struct s_elem	*down;
 }	t_elem;
 
-typedef struct stack {
+typedef struct s_stack {
 	t_elem	*ta;
 	t_elem	*tb;
 	size_t	size_total;
@@ -28,7 +28,7 @@ typedef struct stack {
 	size_t	size_b;
 }	t_stack;
 
-typedef struct info {
+typedef struct s_info {
 	size_t	op_count;
 	size_t	ra_n;
 	size_t	rb_n;
