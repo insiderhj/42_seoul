@@ -6,7 +6,7 @@
 /*   By: heejikim <heejikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 22:43:31 by heejikim          #+#    #+#             */
-/*   Updated: 2022/11/17 11:32:11 by heejikim         ###   ########.fr       */
+/*   Updated: 2022/11/29 22:02:48 by heejikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define GET_NEXT_LINE_H
 # include <unistd.h>
 # include <stdlib.h>
-# include <stdio.h>
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 10
 # endif
