@@ -10,7 +10,7 @@ CLIB=-Lmlx -lmlx -framework OpenGL -framework Appkit -Imlx
 LIB_SRCS= $(addprefix $(LIB_DIR)/, ft_atoi.c ft_hexlen.c ft_isdigit.c ft_nbrlen.c ft_printf_parser.c \
 									ft_printf_printer.c ft_printf_utils.c ft_printf.c ft_putchar.c ft_puthex.c \
 									ft_putnbr.c ft_putnchar.c ft_putnstr.c ft_putstr.c ft_strchr.c \
-									ft_strlen.c get_next_line_utils.c get_next_line.c)
+									ft_strlen.c get_next_line_utils.c get_next_line.c ft_itoa.c)
 LIB_OBJS=$(LIB_SRCS:.c=.o)
 LIB=libft.a
 

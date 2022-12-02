@@ -6,7 +6,7 @@
 /*   By: heejikim <heejikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 21:17:53 by heejikim          #+#    #+#             */
-/*   Updated: 2022/11/30 02:14:48 by heejikim         ###   ########.fr       */
+/*   Updated: 2022/11/30 23:05:18 by heejikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,9 @@ int	main(int argc, char **argv)
 	}
 	map->mlx = mlx_init();
 	map->win = mlx_new_window(map->mlx,
-			map->width * 32, map->height * 32, argv[0]);
+			map->width * 32, map->height * 32 + 32, argv[0]);
 	show_map(map);
+	show_movements(map);
 	mlx_hook(map->win, X_EVENT_KEY_RELEASE, 0, key_press, map);
 	mlx_hook(map->win, X_EVENT_KEY_EXIT, 0, exit_game, map);
 	mlx_loop_hook(map->mlx, animate, map);

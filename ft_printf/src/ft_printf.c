@@ -6,7 +6,7 @@
 /*   By: heejikim <heejikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 14:56:33 by heejikim          #+#    #+#             */
-/*   Updated: 2022/11/16 23:24:58 by heejikim         ###   ########.fr       */
+/*   Updated: 2022/12/02 21:35:51 by heejikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,13 @@ int	ft_parse(const char *format, va_list ap)
 		if (*format == '%')
 		{
 			format++;
-			opt = ft_parse_opt(&format);
-			temp = ft_print_conversion(opt, ap);
+			if (*format == 'c'){
+				ft_putchar()
+			} else if (*format == 's') {
+				ft_putstr()
+			} else if (opt == 'd') {
+				ft_putnbr();
+			}
 			if (temp == -1)
 				return (-1);
 			res += temp;

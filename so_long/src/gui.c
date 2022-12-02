@@ -6,7 +6,7 @@
 /*   By: heejikim <heejikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 02:00:14 by heejikim          #+#    #+#             */
-/*   Updated: 2022/11/30 02:25:20 by heejikim         ###   ########.fr       */
+/*   Updated: 2022/11/30 23:00:01 by heejikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ void	show_map(t_map *map)
 				put_img(map, col, row, "./img/item.xpm");
 			else if (map->map[row][col] == 'E')
 				put_img(map, col, row, "./img/exit.xpm");
+			else if (map->map[row][col] == 'X')
+				put_img(map, col, row, "./img/enemy_0.xpm");
 			else if (map->map[row][col] == 'P')
 				put_img(map, col, row, "./img/p_down_0.xpm");
 			col++;
@@ -53,5 +55,21 @@ void	show_map(t_map *map)
 
 void	show_movements(t_map *map)
 {
-	ft_printf("current movements: %d\n", map->movements);
+	size_t	col;
+	char	*movements_str;
+
+	col = 0;
+	while (col < map->width)
+	{
+		put_img(map, col, map->height, "./img/black.xpm");
+		col++;
+	}
+	mlx_string_put(map->mlx, map->win, 0, map->height * 32,
+		0xffffff, "movements:");
+	movements_str = ft_itoa(map->movements);
+	if (!movements_str)
+		exit_game(map);
+	mlx_string_put(map->mlx, map->win, 100, map->height * 32,
+		0xffffff, movements_str);
+	free(movements_str);
 }

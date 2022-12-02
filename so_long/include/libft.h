@@ -6,7 +6,7 @@
 /*   By: heejikim <heejikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 16:49:37 by heejikim          #+#    #+#             */
-/*   Updated: 2022/11/27 02:59:31 by heejikim         ###   ########.fr       */
+/*   Updated: 2022/11/30 22:30:20 by heejikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@ int		ft_putnchar(char c, int len);
 int		ft_putnstr(char *s, int len);
 char	*ft_strchr(const char *s, int c);
 int		ft_atoi(const char *str);
+char	*ft_itoa(size_t n);
 
 #endif
