@@ -6,7 +6,7 @@
 /*   By: heejikim <heejikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 01:59:14 by heejikim          #+#    #+#             */
-/*   Updated: 2022/11/30 22:28:16 by heejikim         ###   ########.fr       */
+/*   Updated: 2022/12/02 23:08:40 by heejikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,20 @@ void	ft_strcpy(char *dst, char *src)
 		i++;
 	}
 	dst[i] = '\0';
+}
+
+int	free_path(t_map *map, char **path)
+{
+	size_t	row;
+
+	if (!map || !path)
+		return (0);
+	row = 0;
+	while (row < map->height)
+	{
+		free(path[row]);
+		row++;
+	}
+	free(path);
+	return (0);
 }

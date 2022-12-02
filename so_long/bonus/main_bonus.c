@@ -6,7 +6,7 @@
 /*   By: heejikim <heejikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 21:17:53 by heejikim          #+#    #+#             */
-/*   Updated: 2022/11/30 02:34:46 by heejikim         ###   ########.fr       */
+/*   Updated: 2022/12/02 23:55:30 by heejikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	main(int argc, char **argv)
 	}
 	map = create_map();
 	if (!map)
-		return (0);
+		return (free_map(map));
 	if (!read_map(map, argv[1]))
 	{
 		ft_printf("Error\ninvalid map\n");

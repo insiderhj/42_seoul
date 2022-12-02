@@ -6,7 +6,7 @@
 /*   By: heejikim <heejikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 21:40:57 by heejikim          #+#    #+#             */
-/*   Updated: 2022/11/30 03:08:19 by heejikim         ###   ########.fr       */
+/*   Updated: 2022/12/02 23:43:33 by heejikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,11 @@ typedef enum e_stat {
 	WIN
 }	t_stat;
 
+typedef struct s_pos {
+	size_t	row;
+	size_t	col;
+}	t_pos;
+
 typedef struct s_map {
 	void	*mlx;
 	void	*win;
@@ -46,8 +51,9 @@ typedef struct s_map {
 	size_t	player_n;
 	size_t	width;
 	size_t	height;
-	size_t	p_row;
-	size_t	p_col;
+	t_pos	exit;
+	t_pos	p;
+	t_pos	**enemy;
 	t_dir	p_dir;
 	t_stat	p_stat;
 	size_t	movements;
@@ -58,6 +64,7 @@ typedef struct s_map {
 int		ft_endswith(char *s1, char *s2);
 size_t	ft_linelen(char *line);
 void	ft_strcpy(char *dst, char *src);
+int		free_path(t_map *map, char **path);
 
 // map.c
 t_map	*create_map(void);
@@ -69,6 +76,13 @@ int		free_map(t_map *map);
 // checker.c
 int		check_map(t_map *map);
 int		check_rows(t_map *map);
+int		check_path(t_map *map);
+char	**init_path(t_map *map);
+void	calc_path(t_map *map, char **path, size_t col, size_t row);
+
+// enemy.c
+void	create_enemy(t_map *map, size_t col, size_t row);
+void	move_enemy(t_map *map, int move);
 
 // event.c
 int		key_press(int key, t_map *map);

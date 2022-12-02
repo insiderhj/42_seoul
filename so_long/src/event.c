@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   event.c                                            :+:      :+:    :+:   */
+/*   event_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: heejikim <heejikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 02:00:47 by heejikim          #+#    #+#             */
-/*   Updated: 2022/11/30 23:04:27 by heejikim         ###   ########.fr       */
+/*   Updated: 2022/12/02 23:50:02 by heejikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,24 +42,24 @@ int	key_press(int key, t_map *map)
 
 int	move_player(t_map *map, int x, int y, char *img)
 {
-	if (map->map[map->p_row + y][map->p_col + x] == '1')
+	if (map->map[map->p.row + y][map->p.col + x] == '1')
 		return (0);
-	put_img(map, map->p_col, map->p_row, "./img/floor.xpm");
-	if (map->map[map->p_row][map->p_col] != 'E')
-		map->map[map->p_row][map->p_col] = '0';
+	put_img(map, map->p.col, map->p.row, "./img/floor.xpm");
+	if (map->map[map->p.row][map->p.col] != 'E')
+		map->map[map->p.row][map->p.col] = '0';
 	else
-		put_img(map, map->p_col, map->p_row, "./img/exit.xpm");
-	map->p_row += y;
-	map->p_col += x;
-	if (map->map[map->p_row][map->p_col] == 'C')
+		put_img(map, map->p.col, map->p.row, "./img/exit.xpm");
+	map->p.row += y;
+	map->p.col += x;
+	if (map->map[map->p.row][map->p.col] == 'C')
 		map->collectible_n--;
-	else if (map->map[map->p_row][map->p_col] == 'X')
+	else if (map->map[map->p.row][map->p.col] == 'X')
 		map->p_stat = LOSE;
-	else if (map->map[map->p_row][map->p_col] == 'E' && map->collectible_n == 0)
+	else if (map->map[map->p.row][map->p.col] == 'E' && map->collectible_n == 0)
 		map->p_stat = WIN;
-	if (map->map[map->p_row][map->p_col] != '0')
-		put_img(map, map->p_col, map->p_row, "./img/floor.xpm");
-	put_img(map, map->p_col, map->p_row, img);
+	if (map->map[map->p.row][map->p.col] != '0')
+		put_img(map, map->p.col, map->p.row, "./img/floor.xpm");
+	put_img(map, map->p.col, map->p.row, img);
 	map->movements++;
 	show_movements(map);
 	check_status(map);

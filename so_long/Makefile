@@ -15,10 +15,10 @@ LIB_OBJS=$(LIB_SRCS:.c=.o)
 LIB=libft.a
 
 SRCS=$(addprefix $(SRC_DIR)/, so_long_utils.c map.c checker.c event.c gui.c \
-								animate.c main.c)
+								animate.c enemy.c main.c)
 OBJS=$(SRCS:.c=.o)
 BONUS_SRCS=$(addprefix $(BONUS_DIR)/,so_long_utils_bonus.c map_bonus.c checker_bonus.c event_bonus.c gui_bonus.c \
-									animate_bonus.c main_bonus.c)
+									animate_bonus.c enemy_bonus.c main_bonus.c)
 BONUS_OBJS=$(BONUS_SRCS:.c=.o)
 NAME=so_long
 
