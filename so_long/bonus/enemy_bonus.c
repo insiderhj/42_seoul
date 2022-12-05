@@ -6,7 +6,7 @@
 /*   By: heejikim <heejikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:27:18 by heejikim          #+#    #+#             */
-/*   Updated: 2022/12/02 23:52:14 by heejikim         ###   ########.fr       */
+/*   Updated: 2022/12/05 02:53:35 by heejikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	move_enemy(t_map *map, int move)
 	i = 0;
 	while (map->enemy[i])
 	{
-		if (map->map[map->enemy[i]->row][map->enemy[i]->col + move] != '1')
+		if (map->map[map->enemy[i]->row][map->enemy[i]->col + move] == '0')
 		{
 			put_img(map, map->enemy[i]->col, map->enemy[i]->row,
 				"./img/floor.xpm");

@@ -6,7 +6,7 @@
 /*   By: heejikim <heejikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 01:58:17 by heejikim          #+#    #+#             */
-/*   Updated: 2022/12/02 23:45:51 by heejikim         ###   ########.fr       */
+/*   Updated: 2022/12/05 13:20:21 by heejikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,27 @@
 #include "get_next_line.h"
 #include "so_long.h"
 
-t_map	*create_map(void)
+int	create_map(t_map *map)
 {
-	t_map	*res;
-
-	res = malloc(sizeof(t_map));
-	if (!res)
-		return (NULL);
-	res->map = NULL;
-	res->exit_n = 0;
-	res->collectible_n = 0;
-	res->player_n = 0;
-	res->width = 0;
-	res->height = 0;
-	res->exit.row = 0;
-	res->exit.col = 0;
-	res->p.row = 0;
-	res->p.col = 0;
-	res->enemy = malloc(sizeof(t_pos *));
-	if (!res->enemy)
-		return (NULL);
-	res->enemy[0] = NULL;
-	res->p_dir = DOWN;
-	res->p_stat = ALIVE;
-	res->movements = 0;
-	res->frame = 0;
-	return (res);
+	map->map = NULL;
+	map->exit_n = 0;
+	map->collectible_n = 0;
+	map->player_n = 0;
+	map->width = 0;
+	map->height = 0;
+	map->exit.row = 0;
+	map->exit.col = 0;
+	map->p.row = 0;
+	map->p.col = 0;
+	map->enemy = malloc(sizeof(t_pos *));
+	if (!map->enemy)
+		return (0);
+	map->enemy[0] = NULL;
+	map->p_dir = DOWN;
+	map->p_stat = ALIVE;
+	map->movements = 0;
+	map->frame = 0;
+	return (1);
 }
 
 int	read_map(t_map *map, char *filename)
@@ -120,23 +115,19 @@ int	free_map(t_map *map)
 {
 	size_t	i;
 
-	if (map)
+	if (map->map)
 	{
-		if (map->map)
-		{
-			i = 0;
-			while (i < map->height)
-				free(map->map[i++]);
-			free(map->map);
-		}
-		if (map->enemy)
-		{
-			i = 0;
-			while (map->enemy[i])
-				free(map->enemy[i++]);
-			free(map->enemy);
-		}
-		free(map);
+		i = 0;
+		while (i < map->height)
+			free(map->map[i++]);
+		free(map->map);
+	}
+	if (map->enemy)
+	{
+		i = 0;
+		while (map->enemy[i])
+			free(map->enemy[i++]);
+		free(map->enemy);
 	}
 	return (0);
 }

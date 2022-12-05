@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gui_bonus.c                                        :+:      :+:    :+:   */
+/*   gui.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: heejikim <heejikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 02:00:14 by heejikim          #+#    #+#             */
-/*   Updated: 2022/12/02 23:52:47 by heejikim         ###   ########.fr       */
+/*   Updated: 2022/12/05 13:15:54 by heejikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	put_img(t_map *map, size_t col, size_t row, char *file)
 
 	img = mlx_xpm_file_to_image(map->mlx, file, &img_width, &img_height);
 	mlx_put_image_to_window(map->mlx, map->win, img, col * 32, row * 32);
+	mlx_destroy_image(map->mlx, img);
 }
 
 void	show_map(t_map *map)

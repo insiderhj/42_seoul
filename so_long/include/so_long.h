@@ -6,7 +6,7 @@
 /*   By: heejikim <heejikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 21:40:57 by heejikim          #+#    #+#             */
-/*   Updated: 2022/12/02 23:43:33 by heejikim         ###   ########.fr       */
+/*   Updated: 2022/12/05 13:16:49 by heejikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	ft_strcpy(char *dst, char *src);
 int		free_path(t_map *map, char **path);
 
 // map.c
-t_map	*create_map(void);
+int		create_map(t_map *map);
 int		read_map(t_map *map, char *filename);
 int		insert_line(t_map *map, char *line);
 void	count_chars(t_map *map, char *line);
