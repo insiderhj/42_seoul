@@ -6,7 +6,7 @@
 /*   By: heejikim <heejikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 02:45:20 by heejikim          #+#    #+#             */
-/*   Updated: 2022/12/08 03:33:05 by heejikim         ###   ########.fr       */
+/*   Updated: 2022/12/08 04:04:44 by heejikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 int	main(int argc, char **argv)
 {
 	t_table	*table;
-
 
 	if (argc < 5 || argc > 6 || ft_atoi(argv[1]) < 0 || ft_atoi(argv[2]) < 0
 		|| ft_atoi(argv[3]) < 0 || ft_atoi(argv[4]) < 0

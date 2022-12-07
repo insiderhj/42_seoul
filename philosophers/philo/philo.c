@@ -6,7 +6,7 @@
 /*   By: heejikim <heejikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 07:00:51 by heejikim          #+#    #+#             */
-/*   Updated: 2022/12/08 04:01:48 by heejikim         ###   ########.fr       */
+/*   Updated: 2022/12/08 04:06:05 by heejikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,16 @@ void	take_fork(t_philo *philo)
 		right = 0;
 	pick_fork(philo->table, left);
 	print_state(philo->table, philo->idx, "has taken a fork", 0);
+	while (philo->table->size == 1)
+	{
+		pthread_mutex_lock(&philo->table->global_mutex);
+		if (philo->table->done)
+		{
+			pthread_mutex_unlock(&philo->table->global_mutex);
+			exit(0);
+		}
+		pthread_mutex_unlock(&philo->table->global_mutex);
+	}
 	pick_fork(philo->table, right);
 	print_state(philo->table, philo->idx, "has taken a fork", 0);
 }
