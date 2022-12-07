@@ -6,12 +6,11 @@
 /*   By: heejikim <heejikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 07:00:51 by heejikim          #+#    #+#             */
-/*   Updated: 2022/12/05 10:58:37 by heejikim         ###   ########.fr       */
+/*   Updated: 2022/12/07 23:31:43 by heejikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include <stdio.h>
 #include "philosophers_bonus.h"
 
 void	create_processes(t_table *table)
@@ -64,6 +63,7 @@ void	philo_loop(t_table table, t_philo *philo)
 	sem_wait(table.forks);
 	print_state(table, philo, "has taken a fork", 0);
 	sem_wait(table.forks);
+	print_state(table, philo, "has taken a fork", 0);
 	philo->last_eat = print_state(table, philo, "is eating", 0);
 	philo->eaten++;
 	sem_post(table.order_sem);

@@ -6,12 +6,11 @@
 /*   By: heejikim <heejikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 06:06:47 by heejikim          #+#    #+#             */
-/*   Updated: 2022/12/05 10:53:12 by heejikim         ###   ########.fr       */
+/*   Updated: 2022/12/07 20:01:18 by heejikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include <stdio.h>
 #include "philosophers_bonus.h"
 
 void	*monitor_die(void *param)

@@ -6,12 +6,11 @@
 /*   By: heejikim <heejikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 02:45:20 by heejikim          #+#    #+#             */
-/*   Updated: 2022/12/05 10:58:43 by heejikim         ###   ########.fr       */
+/*   Updated: 2022/12/07 23:42:39 by heejikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <signal.h>
-#include <stdio.h>
 #include "philosophers_bonus.h"
 
 int	check_args(int argc, char **argv)
