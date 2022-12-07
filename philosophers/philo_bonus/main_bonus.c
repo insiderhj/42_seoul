@@ -6,7 +6,7 @@
 /*   By: heejikim <heejikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 02:45:20 by heejikim          #+#    #+#             */
-/*   Updated: 2022/12/07 23:42:39 by heejikim         ###   ########.fr       */
+/*   Updated: 2022/12/08 01:48:50 by heejikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,10 @@ t_table	init_table(int argc, char **argv)
 	gettimeofday(&table.start_time, NULL);
 	table.global_sem = init_sem("global_sem", 0);
 	table.forks = init_sem("forks", table.size);
-	table.odd_sem = init_sem("odd_sem", table.size / 2);
-	table.even_sem = init_sem("even_sem", 0);
-	table.order_sem = init_sem("order_sem", 0);
+	table.even_sem = init_sem("even_sem", table.size / 2);
+	table.odd_sem = init_sem("odd_sem", 0);
+	table.last_sem = init_sem("last_sem", 0);
+	table.turn_sem = init_sem("turn_sem", 0);
 	table.eat_monitor = init_sem("eat_monitor", 0);
 	table.die_monitor = init_sem("die_monitor", 0);
 	return (table);

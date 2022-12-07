@@ -6,7 +6,7 @@
 /*   By: heejikim <heejikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 02:51:27 by heejikim          #+#    #+#             */
-/*   Updated: 2022/12/05 10:24:13 by heejikim         ###   ########.fr       */
+/*   Updated: 2022/12/08 03:39:40 by heejikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,10 @@
 # include <sys/time.h>
 
 typedef struct s_philo {
-	int		idx;
-	int		last_eat;
-	int		eaten;
+	int				idx;
+	int				last_eat;
+	int				eaten;
+	pthread_mutex_t	eat_mutex;
 }	t_philo;
 
 typedef struct s_table {
@@ -34,7 +35,8 @@ typedef struct s_table {
 	struct timeval	start_time;
 	sem_t			*odd_sem;
 	sem_t			*even_sem;
-	sem_t			*order_sem;
+	sem_t			*last_sem;
+	sem_t			*turn_sem;
 	sem_t			*global_sem;
 	sem_t			*forks;
 	sem_t			*die_monitor;

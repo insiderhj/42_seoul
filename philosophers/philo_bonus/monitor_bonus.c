@@ -6,7 +6,7 @@
 /*   By: heejikim <heejikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 06:06:47 by heejikim          #+#    #+#             */
-/*   Updated: 2022/12/07 20:01:18 by heejikim         ###   ########.fr       */
+/*   Updated: 2022/12/08 03:44:46 by heejikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,16 +66,20 @@ void	pass_sem(sem_t *src_sem, sem_t *dst_sem, int src_count, int dst_count)
 void	*monitor_order(void *param)
 {
 	t_table	*table;
-	int		even_count;
-	int		odd_count;
+	int		half_size;
 
 	table = param;
-	even_count = table->size / 2 + table->size % 2;
-	odd_count = table->size / 2;
+	half_size = table->size / 2;
 	while (1)
 	{
-		pass_sem(table->order_sem, table->even_sem, odd_count, even_count);
-		pass_sem(table->order_sem, table->odd_sem, even_count, odd_count);
+		pass_sem(table->turn_sem, table->odd_sem, half_size, half_size);
+		if (table->size % 2 == 1)
+		{
+			pass_sem(table->turn_sem, table->last_sem, half_size, 1);
+			pass_sem(table->turn_sem, table->even_sem, 1, half_size);
+		}
+		else
+			pass_sem(table->turn_sem, table->even_sem, half_size, half_size);
 	}
 }
 
@@ -84,9 +88,15 @@ void	*monitor_philo(void *param)
 	t_info	*info;
 
 	info = param;
-	while (info->philo->last_eat + info->table.ttd
-		> get_ms(info->table.start_time))
-		usleep(100);
+	while (1)
+	{
+		pthread_mutex_lock(&info->philo->eat_mutex);
+		if (info->philo->last_eat + info->table.ttd
+			< get_ms(info->table.start_time))
+			break ;
+		pthread_mutex_unlock(&info->philo->eat_mutex);
+	}
+	pthread_mutex_unlock(&info->philo->eat_mutex);
 	print_state(info->table, info->philo, "died", 1);
 	sem_post(info->table.die_monitor);
 	return (NULL);

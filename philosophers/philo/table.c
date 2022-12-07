@@ -6,11 +6,12 @@
 /*   By: heejikim <heejikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 07:01:28 by heejikim          #+#    #+#             */
-/*   Updated: 2022/12/05 11:59:17 by heejikim         ###   ########.fr       */
+/*   Updated: 2022/12/08 03:36:18 by heejikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <string.h>
 #include "philosophers.h"
 
 t_table	*create_table(void)
@@ -20,16 +21,12 @@ t_table	*create_table(void)
 	table = malloc(sizeof(t_table));
 	if (!table)
 		return (NULL);
-	table->size = 0;
-	table->ttd = 0;
-	table->tte = 0;
-	table->tts = 0;
+	memset(table, 0, sizeof(t_table));
 	table->must_eat = -1;
-	table->done = 0;
-	table->philo = NULL;
-	table->forks = NULL;
+	table->turn = EVEN;
 	pthread_mutex_init(&table->global_mutex, NULL);
 	pthread_mutex_init(&table->fork_mutex, NULL);
+	pthread_mutex_init(&table->eat_mutex, NULL);
 	return (table);
 }
 
@@ -54,6 +51,7 @@ int	init_table(t_table *table, int argc, char **argv)
 		table->philo[i].last_eat = 0;
 		table->philo[i].idx = i;
 		table->philo[i].eaten = 0;
+		pthread_mutex_init(&table->philo[i].ready, NULL);
 		table->forks[i] = AVAILABLE;
 	}
 	return (1);
@@ -63,11 +61,52 @@ int	check_table(t_table *table)
 {
 	struct timeval	cur_time;
 	int				ms;
-	int				i;
-	int				all_eaten;
+	int				res;
 
 	gettimeofday(&cur_time, NULL);
 	ms = get_ms(table->start_time);
+	pthread_mutex_lock(&table->eat_mutex);
+	check_turn(table);
+	res = check_philos(table, ms);
+	if (res == 0)
+	{
+		pthread_mutex_lock(&table->global_mutex);
+		table->done = 1;
+		pthread_mutex_unlock(&table->global_mutex);
+	}
+	pthread_mutex_unlock(&table->eat_mutex);
+	return (res);
+}
+
+void	check_turn(t_table *table)
+{
+	int		half_size;
+
+	half_size = table->size / 2;
+	if (table->turn == EVEN && table->even_cnt == half_size)
+	{
+		table->even_cnt = 0;
+		table->turn = ODD;
+	}
+	else if (table->turn == ODD && table->odd_cnt == half_size)
+	{
+		table->odd_cnt = 0;
+		table->turn = EVEN;
+		if (table->size % 2)
+			table->turn = LAST;
+	}
+	else if (table->turn == LAST && table->last_eaten)
+	{
+		table->last_eaten = 0;
+		table->turn = EVEN;
+	}
+}
+
+int	check_philos(t_table *table, int ms)
+{
+	int				i;
+	int				all_eaten;
+
 	all_eaten = 1;
 	i = 0;
 	while (i < table->size)
@@ -84,21 +123,4 @@ int	check_table(t_table *table)
 		i++;
 	}
 	return (!all_eaten);
-}
-
-int	free_table(t_table *table)
-{
-	if (table)
-	{
-		table->done = 1;
-		if (table->philo)
-			join_all(table);
-		free(table->philo);
-		if (table->forks)
-			free(table->forks);
-		pthread_mutex_destroy(&table->fork_mutex);
-		pthread_mutex_destroy(&table->global_mutex);
-		free(table);
-	}
-	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: heejikim <heejikim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 07:02:37 by heejikim          #+#    #+#             */
-/*   Updated: 2022/12/07 20:01:28 by heejikim         ###   ########.fr       */
+/*   Updated: 2022/12/08 03:59:53 by heejikim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,29 @@ int	print_state(t_table *table, int idx, char *str, int done)
 		table->done = 1;
 	pthread_mutex_unlock(&table->global_mutex);
 	return (ms);
+}
+
+void	increase_cnt(t_table *table, int idx)
+{
+	if (table->size % 2 == 1 && idx == table->size - 1)
+		table->last_eaten = 1;
+	else if (idx % 2 == 0)
+		table->even_cnt++;
+	else
+		table->odd_cnt++;
+}
+
+void	ft_sleep(int ms)
+{
+	struct timeval	start_time;
+	struct timeval	cur_time;
+
+	gettimeofday(&start_time, NULL);
+	while (1)
+	{
+		gettimeofday(&cur_time, NULL);
+		if ((cur_time.tv_sec - start_time.tv_sec) * 1000000
+			+ (cur_time.tv_usec - start_time.tv_usec) > ms * 1000)
+			break ;
+	}
 }
